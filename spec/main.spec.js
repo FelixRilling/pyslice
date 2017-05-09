@@ -1,34 +1,71 @@
 "use strict";
 
-const lev = require("../index.js");
+const slice = require("../index.js");
 
-describe("Main test", function () {
+describe("Start+End", function () {
 
-    it("Normal case", function () {
-        expect(lev("Kitten", "Sitting")).toBe(3);
+    it("Normal case 1", function () {
+        expect(slice("Abracadabra", 0, 5)).toBe("Abrac");
     });
 
-    it("Simple case", function () {
-        expect(lev("String", "Stribng")).toBe(1);
+    it("Normal case 2", function () {
+        expect(slice("Abracadabra", 2, 5)).toBe("rac");
     });
 
-    it("Position case", function () {
-        expect(lev("Foo", "oof")).toBe(2);
+    it("Normal case 3", function () {
+        expect(slice("Abracadabra", 0, 1)).toBe("A");
     });
 
-    it("Complex case", function () {
-        expect(lev("!Lorem", "23Xd")).toBe(6);
+
+    /*it("Negative index 1", function () {
+        expect(slice("Abracadabra", -2, 5)).toBe("");
     });
 
-    it("Long case", function () {
-        expect(lev("fooooooooooooooooooooooooooooooooooooooooooo", "fooooooooooooodooooooooooooooooooosa4oooooooo")).toBe(4);
+    it("Negative index 2", function () {
+        expect(slice("Abracadabra", 0, -7)).toBe("Abra");
     });
 
-    it("Emtpy case", function () {
-        expect(lev("", "")).toBe(0);
+    it("Negative index 3", function () {
+        expect(slice("Abracadabra", -4, -1)).toBe("abr");
     });
 
-    it("Half emtpy case", function () {
-        expect(lev("Lorem", "")).toBe(5);
+    it("Negative index 4", function () {
+        expect(slice("Abracadabra", -6, -4)).toBe("ad");
+    });
+
+    it("Big Index 1", function () {
+        expect(slice("Abracadabra", 0, 20)).toBe("Abracadabra");
+    });
+
+    it("Big Index 2", function () {
+        expect(slice("Abracadabra", -10, 20)).toBe("Abracadabra");
+    });*/
+
+
+    it("Missing arg 1", function () {
+        expect(slice("Abracadabra", false, 5)).toBe("Abrac");
+    });
+
+    it("Missing arg 2", function () {
+        expect(slice("Abracadabra", 0, false)).toBe("Abracadabra");
+    });
+});
+
+describe("Steps", function () {
+
+
+});
+
+describe("Arrays", function () {
+    it("Normal case 1", function () {
+        expect(slice(["foo", "bar", "fizz", "buzz"], 0, 4)).toEqual(["foo", "bar", "fizz", "buzz"]);
+    });
+
+    it("Normal case 2", function () {
+        expect(slice(["foo", "bar", "fizz", "buzz"], 2, 4)).toEqual(["fizz", "buzz"]);
+    });
+
+    it("Normal case 3", function () {
+        expect(slice(["foo", "bar", "fizz", "buzz"], 0, 1)).toEqual(["foo"]);
     });
 });

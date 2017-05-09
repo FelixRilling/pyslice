@@ -1,54 +1,43 @@
 "use strict";
 
-/**
- * Calculate levenshtein string distance
- * @param  {String} str1 Input string 1
- * @param  {String} str2 Input string 2
- * @return {Number} String distance; the lower, the closer
- */
-module.exports = function (input, start, end, step) {
-    //Cache string length
-    const str1_l = str1.length;
-    const str2_l = str2.length;
-
-    if (str1_l === 0) {
-        return str2_l; //Exit early if str1 is emtpy
-    } else if (str2_l === 0) {
-        return str1_l; //Exit early if str2 is emtpy
+const isString = val => typeof val === "string";
+const isArray = val => val instanceof Array;
+const getStepped = (arr, step) => arr.filter((item, index) => index % step === 0);
+const convertInput = function (input) {
+    if (input) {
+        return input.split("");
+    } else if (isArray(input)) {
+        return input;
     } else {
-        /**
-         * Create matrix that is (str2.length+1)x(str1.length+1) fields
-         */
-        const matrix = [];
-
-        //Increment along the first column of each row
-        for (let y = 0; y <= str2_l; y++) {
-            matrix[y] = [y];
-        }
-
-        //Increment each column in the first row
-        for (let x = 0; x <= str1_l; x++) {
-            matrix[0][x] = x;
-        }
-
-        //Fill matrix
-        for (let y = 1; y <= str2_l; y++) {
-            const matrix_column_current = matrix[y];
-            const matrix_column_last = matrix[y - 1];
-
-            for (let x = 1; x <= str1_l; x++) {
-                if (str2.charAt(y - 1) === str1.charAt(x - 1)) { //Check if letter at the position is the same
-                    matrix_column_current[x] = matrix_column_last[x - 1];
-                } else { //Check for substitution/insertion/deletion
-                    const substitution = matrix_column_last[x - 1] + 1;
-                    const insertion = matrix_column_current[x - 1] + 1;
-                    const deletion = matrix_column_last[x] + 1;
-
-                    matrix_column_current[x] = Math.min.apply(null, [substitution, insertion, deletion]); //Get smallest of values
-                }
-            }
-        }
-
-        return matrix[str2_l][str1_l]; //Return max value
+        throw new TypeError("can only slice arrays or strings");
     }
+};
+
+/**
+ * Slices a string or array python-style
+ * @param {String|Array} input
+ * @param {Number|Boolean} start
+ * @param {Number|Boolean} end
+ * @param {Number|Boolean} step
+ * @returns {String|Array}
+ */
+module.exports = function (input, start = false, end = false, step = false) {
+    const inputIsString = isString(input);
+    const inputVal=convertInput(input);
+    const sliced = inputVal.slice(start, end);
+    let result;
+
+    if (step === false) {
+        result = sliced;
+    } else {
+        if (step === 0) {
+            throw new RangeError("slice step cannot be zero");
+        } else if (step < 0) {
+            result = getStepped(sliced.split("").reverse(), step).join("");
+        } else {
+            result = getStepped(sliced.split(""), step).join("");
+        }
+    }
+
+    return inputIsString ? result.join("") : result;
 };
