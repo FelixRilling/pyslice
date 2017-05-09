@@ -1,0 +1,30 @@
+{
+    "name": "pyslice",
+    "version": "1.0.0",
+    "description": "An implementation of pythons slice in JS",
+    "main": "index.js",
+    "scripts": {
+        "start": "npm-run-all lint test",
+        "lint": "eslint index.js lib/",
+        "test": "jasmine"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/FelixRilling/pyslice.git"
+    },
+    "keywords": [
+        "python",
+        "slice"
+    ],
+    "author": "Felix Rilling",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/FelixRilling/pyslice/issues"
+    },
+    "homepage": "https://github.com/FelixRilling/pyslice#readme",
+    "devDependencies": {
+        "eslint": "^3.19.0",
+        "jasmine": "^2.6.0",
+        "npm-run-all": "^4.0.2"
+    }
+}
