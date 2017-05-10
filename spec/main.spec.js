@@ -70,12 +70,8 @@ describe("Steps", function () {
         expect(slice("Abracadabra", 2, 9, 3)).toBe("rab");
     });
 
-    it("Normal case 3", function () {
-        expect(slice("Abracadabra", 0, false, -1)).toBe("arbadacarbA");
-    });
-
-    it("Normal case 4", function () {
-        expect(slice("Abracadabra", 0, false, -2)).toBe("abdcrA");
+    it("Negative index 1", function () {
+        expect(slice("Abracadabra", false, false, -3)).toBe("aacb");
     });
 
     it("Arrays 1", function () {
