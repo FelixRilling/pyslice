@@ -2,4 +2,4 @@
 
 const slice = require("./index.js");
 
-console.log(slice("Abracadabra",-4,-1));
+console.log([slice("Abracadabra",-5)]);

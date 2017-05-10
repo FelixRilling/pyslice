@@ -2,23 +2,23 @@
 
 const slice = require("../index.js");
 
-describe("Start+End", function () {
+describe("Start", function () {
+    it("Normal case 1", function () {
+        expect(slice("Abracadabra", 0)).toBe("A");
+    });
 
+    it("Normal case 2", function () {
+        expect(slice("Abracadabra", -5)).toBe("d");
+    });
+});
+
+describe("Start+End", function () {
     it("Normal case 1", function () {
         expect(slice("Abracadabra", 0, 5)).toBe("Abrac");
     });
 
-    it("Normal case 2", function () {
-        expect(slice("Abracadabra", 2, 5)).toBe("rac");
-    });
-
-    it("Normal case 3", function () {
-        expect(slice("Abracadabra", 0, 1)).toBe("A");
-    });
-
-
     it("Negative index 1", function () {
-        expect(slice("Abracadabra", -2, 5)).toBe("");
+        expect(slice("Abracadabra", 3, -5)).toBe("aca");
     });
 
     it("Negative index 2", function () {
@@ -29,10 +29,6 @@ describe("Start+End", function () {
         expect(slice("Abracadabra", -4, -1)).toBe("abr");
     });
 
-    it("Negative index 4", function () {
-        expect(slice("Abracadabra", -6, -4)).toBe("ad");
-    });
-
     it("Big Index 1", function () {
         expect(slice("Abracadabra", 0, 20)).toBe("Abracadabra");
     });
@@ -41,9 +37,8 @@ describe("Start+End", function () {
         expect(slice("Abracadabra", -10, 20)).toBe("bracadabra");
     });
 
-
     it("Missing arg 1", function () {
-        expect(slice("Abracadabra", false, 5)).toBe("Abrac");
+        expect(slice("Abracadabra", false, -2)).toBe("Abracadab");
     });
 
     it("Missing arg 2", function () {
@@ -68,7 +63,7 @@ describe("Arrays", function () {
 
 describe("Steps", function () {
     it("Normal case 1", function () {
-        expect(slice("Abracadabra", 0, 5, 1)).toBe("Abrac");
+        expect(slice("Abracadabra", 0, 6, 1)).toBe("Abraca");
     });
 
     it("Normal case 2", function () {
