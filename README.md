@@ -25,9 +25,9 @@ slice("Abracadabra", 0, false) //=>"Abracadabra"
 slice("Abracadabra", false, -2) //=>"Abracadab"
 
 
-//py: "Abracadabra"[0:6:1]          =>"Abracadab"
+//py: "Abracadabra"[0:6:1]      =>"Abracadab"
 slice("Abracadabra", 0, 6, 1) //=>"Abracadab"
 
-//py: "Abracadabra"[::-3]          =>"aacb"
+//py: "Abracadabra"[::-3]                =>"aacb"
 slice("Abracadabra", false, false, -3) //=>"aacb"
 ```
