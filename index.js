@@ -2,27 +2,30 @@
 
 /**
  * Converts negative indexes
- * @param {Array} arr
- * @param {Number} index
- * @returns {Number}
+ *
+ * @param {Array<any>} arr
+ * @param {number} index
+ * @returns {number}
  */
 const calcIndex = (arr, index) => index < 0 ? arr.length + index : index;
 
 /**
  * Returns an array with every n-th item
- * @param {Array} arr
- * @param {Number} step
- * @returns {Array}
+ *
+ * @param {Array<any>} arr
+ * @param {number} step
+ * @returns {Array<any>}
  */
 const getStepped = (arr, step) => arr.filter((item, index) => index % step === 0);
 
 /**
  * Slices a string or array python-style
- * @param {String|Array} input
- * @param {Number|false} start
- * @param {Number|false} end  optional
- * @param {Number}       step optional
- * @returns {String|Array}
+ *
+ * @param {string|Array<any>} input
+ * @param {number|false} start
+ * @param {number|false} end  optional
+ * @param {number}       step optional
+ * @returns {string|Array<any>}
  */
 module.exports = function (input, start, end = null, step = null) {
     const inputIsString = typeof input === "string";
