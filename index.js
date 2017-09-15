@@ -3,11 +3,11 @@
 /**
  * Converts negative indexes
  *
- * @param {Array<any>} arr
+ * @param {number} length
  * @param {number} index
  * @returns {number}
  */
-const calcIndex = (arr, index) => index < 0 ? arr.length + index : index;
+const calcIndex = (length, index) => index < 0 ? length + index : index;
 
 /**
  * Returns an array with every n-th item
@@ -30,10 +30,10 @@ const getStepped = (arr, step) => arr.filter((item, index) => index % step === 0
 module.exports = function (input, start, end = null, step = null) {
     const inputIsString = typeof input === "string";
     const arr = inputIsString ? input.split("") : input;
-    const startVal = start === false ? 0 : calcIndex(arr, start);
+    const startVal = start === false ? 0 : calcIndex(arr.length, start);
 
     if (end !== null) {
-        const endVal = end === false ? arr.length : calcIndex(arr, end);
+        const endVal = end === false ? arr.length : calcIndex(arr.length, end);
         let result;
 
         result = arr.slice(startVal, endVal);
