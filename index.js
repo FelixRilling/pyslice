@@ -1,5 +1,9 @@
 "use strict";
 
+const {
+    isString
+} = require("lightdash");
+
 /**
  * Converts negative indexes
  *
@@ -23,12 +27,12 @@ const getStepped = (arr, step) => arr.filter((item, index) => index % step === 0
  *
  * @param {string|Array<any>} input
  * @param {number|false} start
- * @param {number|false} end  optional
- * @param {number}       step optional
+ * @param {number|false} [end=null]  optional
+ * @param {number}       [step=null]
  * @returns {string|Array<any>}
  */
 module.exports = function (input, start, end = null, step = null) {
-    const inputIsString = typeof input === "string";
+    const inputIsString = isString(input);
     const arr = inputIsString ? input.split("") : input;
     const startVal = start === false ? 0 : calcIndex(arr.length, start);
 
