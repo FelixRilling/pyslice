@@ -5,6 +5,8 @@ An implementation of pythons slice in JS
 ## Usage
 
 ```js
+const slice = require("pyslice");
+
 //py: "Abracadabra"[0]    =>"A"
 slice("Abracadabra", 0) //=>"A"
 
