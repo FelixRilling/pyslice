@@ -7,5 +7,5 @@
  * @param {number|null}       [step=null]
  * @returns {string|Array<any>}
  */
-declare const pyslice: (input: string, start: number | false, end?: number | false | null, step?: number | null) => any;
+declare const pyslice: <T>(input: string | T[], start: number | false, end?: number | false | null, step?: number | null) => string | T | T[];
 export default pyslice;

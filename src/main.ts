@@ -31,14 +31,14 @@ const getStepped = <T>(arr: T[], step: number): T[] =>
  * @param {number|null}       [step=null]
  * @returns {string|Array<any>}
  */
-const pyslice = (
-    input: string,
+const pyslice = <T>(
+    input: string | T[],
     start: number | false,
     end: number | false | null = null,
     step: number | null = null
-) => {
+): string | T | T[] => {
     const inputIsString = isString(input);
-    const arr = inputIsString ? input.split("") : input;
+    const arr = inputIsString ? (<string>input).split("") : input;
     const startVal = start === false ? 0 : calcIndex(arr.length, start);
 
     if (end !== null) {
