@@ -1,6 +1,6 @@
 "use strict";
 
-const slice = require("../index.js");
+const slice = require("../dist/pyslice.common.js");
 
 describe("Start", () => {
     it("Normal case 1", () => {
