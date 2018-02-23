@@ -1,8 +1,6 @@
 "use strict";
 
-const {
-    isString
-} = require("lightdash");
+const { isString } = require("lightdash");
 
 /**
  * Converts negative indexes
@@ -11,7 +9,7 @@ const {
  * @param {number} index
  * @returns {number}
  */
-const calcIndex = (length, index) => index < 0 ? length + index : index;
+const calcIndex = (length, index) => (index < 0 ? length + index : index);
 
 /**
  * Returns an array with every n-th item
@@ -20,7 +18,8 @@ const calcIndex = (length, index) => index < 0 ? length + index : index;
  * @param {number} step
  * @returns {Array<any>}
  */
-const getStepped = (arr, step) => arr.filter((item, index) => index % step === 0);
+const getStepped = (arr, step) =>
+    arr.filter((item, index) => index % step === 0);
 
 /**
  * Slices a string or array python-style
@@ -31,7 +30,7 @@ const getStepped = (arr, step) => arr.filter((item, index) => index % step === 0
  * @param {number}       [step=null]
  * @returns {string|Array<any>}
  */
-module.exports = function (input, start, end = null, step = null) {
+module.exports = function(input, start, end = null, step = null) {
     const inputIsString = isString(input);
     const arr = inputIsString ? input.split("") : input;
     const startVal = start === false ? 0 : calcIndex(arr.length, start);
@@ -53,7 +52,7 @@ module.exports = function (input, start, end = null, step = null) {
         }
 
         return inputIsString ? result.join("") : result;
-    } else {
-        return arr[startVal];
     }
+
+    return arr[startVal];
 };
