@@ -1,6 +1,6 @@
 {
     "name": "pyslice",
-    "version": "2.0.1",
+    "version": "2.1.0",
     "description": "An implementation of python's slice in JS",
     "main": "./dist/pyslice.common.js",
     "module": "./dist/pyslice.esm.js",
