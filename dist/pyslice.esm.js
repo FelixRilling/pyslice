@@ -1,7 +1,7 @@
 import { isString } from 'lightdash';
 
 /**
- * Converts negative indexes
+ * Converts negative indexes.
  *
  * @private
  * @param {number} length
@@ -10,7 +10,7 @@ import { isString } from 'lightdash';
  */
 const calcIndex = (length, index) => index < 0 ? length + index : index;
 /**
- * Returns an array with every n-th item
+ * Returns an array with every n-th item.
  *
  * @private
  * @param {Array<any>} arr
@@ -19,12 +19,12 @@ const calcIndex = (length, index) => index < 0 ? length + index : index;
  */
 const getStepped = (arr, step) => arr.filter((item, index) => index % step === 0);
 /**
- * Slices a string or array python-style
+ * Slices a string or array python-style.
  *
  * @param {string|Array<any>} input
  * @param {number|false} start
- * @param {number|false|null} [end=null]  optional
- * @param {number|null}       [step=null]
+ * @param {number|false|null} [end=null]
+ * @param {number|null} [step=null]
  * @returns {string|Array<any>}
  */
 const pyslice = (input, start, end = null, step = null) => {
